@@ -1,0 +1,6 @@
+id,customer_name,currency,status,opened_on,closed_on,opening_balance_cents
+1001,Ana Lopez,USD,ACTIVE,2025-03-01,,150000
+1002,Carlos Rivas,USD,ACTIVE,2025-06-15,,50000
+1003,Maria Perez,USD,CLOSED,2024-01-10,2026-08-31,0
+1004,Jose Martinez,USD,ACTIVE,2026-02-01,,0
+1005,Laura Gomez,USD,ACTIVE,2026-09-10,,25000
