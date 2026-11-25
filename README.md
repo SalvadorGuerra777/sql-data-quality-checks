@@ -95,3 +95,12 @@ pytest
 - The reconciliation check reports both the reported and the expected balance, so the difference can be investigated.
 
 Last local run: `25 passed`.
+
+## Limitations and next steps
+
+The checks run on SQLite so the project needs no database server. Two of them use SQLite-specific behaviour and would need a dialect-specific version to run on PostgreSQL or SQL Server:
+
+- `invalid_amounts` uses `typeof()` to catch values that aren't whole numbers. That works because the raw tables are loaded without strict types, the way an unvalidated extract arrives. In PostgreSQL the column would have to be loaded as text and checked with a pattern such as `amount_cents !~ '^-?[0-9]+$'`.
+- `balance_reconciliation` uses column aliases inside `HAVING`, which SQLite accepts and PostgreSQL doesn't; the full expressions would go there instead.
+
+Next step: run the same checks against PostgreSQL in CI with a service container, keeping one SQL file per check and a dialect folder only for the checks that differ.
